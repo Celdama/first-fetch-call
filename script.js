@@ -10,6 +10,9 @@ const getCatGif = () => {
     })
     .then(res => {
       img.src = res.data.images.original.url
+    })
+    .catch(error => {
+    console.log('this error', error)
   })
 }
 
@@ -17,4 +20,4 @@ const getCatGif = () => {
 
 btn.addEventListener('click', () => getCatGif())
 
-window.onload(getCatGif())
+window.onload = getCatGif()
