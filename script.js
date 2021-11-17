@@ -25,9 +25,17 @@ const getGiff = (userChoice = 'cat') => {
   })
 }
 
+// SAME FUNCTION WITH ASYNC AWAIT
+const getGiffWithAsync = async (userChoice = 'cat') => {
+  const response = await fetch(`https://api.giphy.com/v1/gifs/translate?api_key=jbAy49ozGN0Qs3mgXOJmbvFVf9eOvZRm&s=${userChoice}`, myInit);
+  response.json().then((response) => {
+    img.src = response.data.images.original.url
+  })
+}
+
 
 form.addEventListener('submit', () => {
-  getGiff(getSearchBarValue())
+  getGiffWithAsync(getSearchBarValue())
   form.reset()
 })
 
@@ -37,4 +45,4 @@ btn.addEventListener('click', () => getGiff())
 
 
 
-window.onload = getGiff()
+window.onload = getGiffWithAsync()
